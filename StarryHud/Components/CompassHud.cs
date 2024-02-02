@@ -25,9 +25,6 @@ internal class CompassHud : IProcessable
     private const float AboveMinimapHeight = 1080f - 205f;
     private const float MinimapLeft = 30f;
 
-    private const float TextScale = 0.35f;
-    private const float TextHeight = 30f;
-
     private static readonly Color BackgroundColor = Color.FromArgb(150, Color.Black);
 
     public void Initialize()
@@ -39,21 +36,21 @@ internal class CompassHud : IProcessable
         _background.Size = new SizeF(42f, 30f);
 
         _text.Position = SafeZone.GetSafePosition(new PointF(MinimapLeft + 5f, AboveMinimapHeight + 0.25f));
-        _text.Scale = TextScale;
+        _text.Scale = Constants.TextScale;
 
         _degrees.Position = SafeZone.GetSafePosition(new PointF(MinimapLeft + 25f, AboveMinimapHeight + 0.25f));
-        _degrees.Scale = TextScale;
+        _degrees.Scale = Constants.TextScale;
 
         _zoneBackground.Color = BackgroundColor;
         _zoneBackground.Position = SafeZone.GetSafePosition(MinimapLeft, AboveMinimapHeight + 30f);
         _zoneBackground.Size = new SizeF(42f, 30f);
 
         _zone.Position = SafeZone.GetSafePosition(MinimapLeft + 5, AboveMinimapHeight + 30f + 0.25f);
-        _zone.Scale = TextScale;
+        _zone.Scale = Constants.TextScale;
         _zone.Color = Color.Orange;
 
         _street.Position = SafeZone.GetSafePosition(MinimapLeft + 15, AboveMinimapHeight + 30f + 0.25f);
-        _street.Scale = TextScale;
+        _street.Scale = Constants.TextScale;
         _street.Color = Color.LightCyan;
     }
     
@@ -85,14 +82,14 @@ internal class CompassHud : IProcessable
         _degrees.Position = SafeZone.GetSafePosition(new PointF(MinimapLeft + 5f + _text.Width + 10f, AboveMinimapHeight + 0.25f));
         _degrees.Text = $"{heading}°";
 
-        _background.Size = new SizeF(5f + _text.Width + 10f + _degrees.Width + 5f, TextHeight);
+        _background.Size = new SizeF(5f + _text.Width + 10f + _degrees.Width + 5f, Constants.TextHeight);
 
         _zone.Text = World.GetZoneLocalizedName(Game.Player.Character.Position);
 
         _street.Position = SafeZone.GetSafePosition(MinimapLeft + 5f,
             _zone.Position.Y + 30f);
         _street.Text = World.GetStreetName(Game.Player.Character.Position);
-        _zoneBackground.Size = new(Util.GetLinesBackgroundWidth(_zone, _street), TextHeight * 2);
+        _zoneBackground.Size = new(Util.GetLinesBackgroundWidth(_zone, _street), Constants.TextHeight * 2);
         
         // Final expanded effect:
 
