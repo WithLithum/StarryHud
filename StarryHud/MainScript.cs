@@ -25,6 +25,7 @@ public class MainScript : Script
         
         Tick += OnTick;
         _compass.Initialize();
+        _clock.Initialize();
     }
 
     private void OnTick(object sender, EventArgs e)

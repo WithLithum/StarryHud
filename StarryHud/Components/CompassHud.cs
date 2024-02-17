@@ -25,11 +25,9 @@ internal class CompassHud : IProcessable
     private const float AboveMinimapHeight = 1080f - 205f;
     private const float MinimapLeft = 30f;
 
-    private static readonly Color BackgroundColor = Color.FromArgb(150, Color.Black);
-
     public void Initialize()
     {
-        _background.Color = BackgroundColor;
+        _background.Color = Constants.BackgroundColor;
 
         // Y: 1080 - 20 - 25f
         _background.Position = SafeZone.GetSafePosition(MinimapLeft, AboveMinimapHeight);
@@ -41,7 +39,7 @@ internal class CompassHud : IProcessable
         _degrees.Position = SafeZone.GetSafePosition(new PointF(MinimapLeft + 25f, AboveMinimapHeight + 0.25f));
         _degrees.Scale = Constants.TextScale;
 
-        _zoneBackground.Color = BackgroundColor;
+        _zoneBackground.Color = Constants.BackgroundColor;
         _zoneBackground.Position = SafeZone.GetSafePosition(MinimapLeft, AboveMinimapHeight + 30f);
         _zoneBackground.Size = new SizeF(42f, 30f);
 

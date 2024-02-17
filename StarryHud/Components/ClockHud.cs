@@ -14,6 +14,13 @@ internal class ClockHud : IProcessable
 
     public bool Visible { get; set; }
 
+    public void Initialize()
+    {
+        Visible = true;
+        _background.Color = Constants.BackgroundColor;
+    }
+
+
     public void Process()
     {
         if (!Visible) return;
